@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="fr">
+<head>
+	<!-- <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"> 
+	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script> -->
+	<link rel="icon" type="image/png" href="..\static\images\got.png" />
+	<link rel="stylesheet" href="{% static 'css/style.css' %}">
+	<title>{% block title %}Le vote de Westeros{% endblock %}</title>
+</head>
+<body>
+<header><h1>Qui Va Régner Sur WESTEROS</h1> </header>
+    <nav>
+       {% block nav %}
+ 
+	   <table class="nav nav-tabs" role="tabtdst">
+			<tr><td><a href="/vote">Accueil</a></td>
+			<td><a href="/carto">Cartographie</a></td>
+			<td><a href="/contact">Contact</a></td>
+			<td><a href="/comment">Commentaires</a></td></tr>
+      </table>
+       {% endblock %}
+   </nav>
+   <section id="content">
+   <hr>
+       {% block content %}{% endblock %}
+   </section>
+<footer>&copy; Bordessoules E <br/> 
+J'ai créé mon site avec <a href="http://en.wikipedia.org/wiki/Django_(web_framework)" target="_blank" class="external_link" id="link_to_wiki_page">Django</a>
+</footer>
+</body>

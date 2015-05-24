@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+	
+	<a class="btn btn-default" href="/comment/add">Ajouter un commentaire</a>
+    {% for comment in comments %}
+		<div class="comment">
+			<strong>{{ comment.auteur }}</strong>
+			<p>{{ comment.texte }}<br/></p>
+		</div>
+		
+	{% empty %}
+		<p class="comment">Pas encore de commentaire dans le chat  ...</p>
+	{% endfor %}
+{% endblock%}
