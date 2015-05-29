@@ -6,8 +6,7 @@ def add_comment(request):
 	if request.method == "POST":
 		form = CommentForm(request.POST)
 		if form.is_valid():
-			comment = form.save(commit=False)
-			comment.save()
+			form.save()
 			return redirect('comment.views.home',)
 	else:
 		form = CommentForm()

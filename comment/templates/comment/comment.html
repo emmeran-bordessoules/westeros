@@ -4,7 +4,7 @@
 	<a class="btn btn-default" href="/comment/add">Ajouter un commentaire</a>
     {% for comment in comments %}
 		<div class="comment">
-			<strong>{{ comment.auteur }}</strong>
+			<strong>{{comment.id}}. {{ comment.auteur }}</strong>
 			<p>{{ comment.texte }}<br/></p>
 		</div>
 		

@@ -67,9 +67,6 @@ STATIC_ROOT = 'staticfiles'
 DEBUG = True
 
 
-# Database
-# https://docs.djangoproject.com/en/1.7/ref/settings/#databases
-
 # DATABASES = {
     # 'default': {
         # 'ENGINE': 'django.db.backends.sqlite3',
@@ -80,18 +77,19 @@ DEBUG = True
 DATABASES = {
 	'default': {
 		'ENGINE': 'django.db.backends.postgresql_psycopg2',
-		'NAME': 'djangogirls',
-		'USER': 'Emmeran',
-		'PASSWORD': '',
-		'HOST': 'localhost',
-		'PORT': '',
+		'NAME': 'd1gkksb8dhmk6t',
+		'USER': 'bpprsodytbgwip',
+		'PASSWORD': 'mhlAXrFJpiILEjjkK21RijDoQw',
+		'HOST': '',
+		'PORT': '5432',
 	}
 }
-
 DATABASES['default'] =  dj_database_url.config()
 
-# Internationalization
-# https://docs.djangoproject.com/en/1.7/topics/i18n/
+
+MEDIA_URL = os.path.join(BASE_DIR, '/static/images/')
+MEDIA_ROOT = os.path.join(BASE_DIR, '/static/images')
+
 
 LANGUAGE_CODE = 'en-us'
 
