@@ -5,7 +5,7 @@ from django.db.models import F
 from .forms import vote_Form
 
 def home(request):
-	votes=Vote.objects.order_by('id')
+	votes=Vote.objects.order_by('NumVote')
 	Score=Vote.objects.order_by('-Score')
 	ip = getIP(request)
 	str(ip)
@@ -19,8 +19,6 @@ def incrVote(request):
 		if form.is_valid():
 			formVote=form.cleaned_data["formVote"]
 			formDep=form.cleaned_data["formDep"]
-			# vot=Vote.objects.get(NumVote=formVote)	
-			# depa=Departement.objects.get(NumDep=formDep)
 			Vote.objects.filter(NumVote=formVote).update(Score=F('Score') + 1)
 			scoreDep.objects.filter(VoteDep=formVote , NumDep=formDep).update(ScoreDep=F('ScoreDep')+1)
 			voteur=Votant()
