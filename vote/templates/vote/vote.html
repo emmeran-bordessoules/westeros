@@ -1,1 +1,46 @@
 {% extends "base.html" %}
+{% block content %}
+	:{{ip}}:
+	{% for i in votant%}
+		<p>{{i.IPVotant}}</p>
+	{%endfor%}
+	{%if ip in votant.IPVotant%}
+		{% for vote in score %}
+			<div class="vote">
+				<img src="../{{vote.ImgVote}}" alt="image {{vote.NumVote}}"/>
+				<p>{{vote.NumVote}}. {{ vote.NomVote }}: {{vote.score}} vote{{ vote.score|pluralize }}</p>
+			</div>
+		{% endfor %}
+	{% else %}
+		<form action="{% url 'vote.views.incrVote' %}" method="post">
+		<p>
+			<label for="departement">Dans quel département habitez-vous ?</label><br />
+			<select name="formDep">
+				<option value="" selected></option>
+				{% for depa in dep %}
+				<option value="{{depa.NumDep}}">{{depa.NomDep}}</option>
+				{% endfor %}
+			</select>
+		</p>
+		<p>
+			<label for="vote">Quivarégnersurwesteros?</label><br />
+			<select name="formVote" >
+				{% for vote in votes %}
+				<option value="{{vote.NumVote}}">{{ vote.NomVote }}</option>
+				{% endfor %}
+			</select>
+		</p>
+		{% csrf_token %}
+		<input type="submit" value="submit">
+		</form>
+		
+		{% for vote in votes %}
+			<img src="../{{vote.ImgVote}}" alt="image {{vote.NumVote}}"/>
+			<p>{{vote.NumVote}}. {{ vote.NomVote }}</p> 
+		{% endfor %}
+			
+	{% endif %}
+{% endblock%}
+
+
+

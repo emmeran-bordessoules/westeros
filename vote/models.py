@@ -7,19 +7,26 @@ class Departement(models.Model):
 	def __str__(self):
 		return self.NomDep
 
-
 class Votant(models.Model):
-	NumDep=models.ForeignKey('Departement')
-	NumVote=models.ForeignKey('Vote')
-	
-	
+	IPVotant=models.CharField(max_length=100)	
+
 class Vote(models.Model):
 	NumVote=models.IntegerField(primary_key=True)
-	Score=models.IntegerField()
-	Nom=models.CharField(max_length=100, default='Jean')
+	Score=models.IntegerField(default=0)
+	NomVote=models.CharField(max_length=100)
+	ImgVote=models.ImageField(upload_to="static/images/")
 	
-	def __score__(self):
-		return self.score
+	# def __score__(self):
+		# return self.Score
 		
 	def __str__(self):
-		return self.Nom
+		return self.NomVote
+
+class scoreDep(models.Model):
+	VoteDep=models.ForeignKey('Vote')
+	NumDep=models.ForeignKey('Departement')
+	ScoreDep=models.IntegerField(default=0)
+	
+class voteForm(models.Model):
+	formDep=models.IntegerField(default=0)
+	formVote=models.IntegerField(default=0)
