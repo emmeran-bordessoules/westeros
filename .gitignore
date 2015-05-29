@@ -4,7 +4,7 @@ __pycache__
 
 staticfiles
 
-local_settings.py
+projet_web/local_settings.py
 
 
 db.sqlite3
