@@ -1,4 +1,0 @@
-BEGIN;
-CREATE TABLE "comment_comment" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "author" varchar(200) NOT NULL, "text" text NOT NULL);
-
-COMMIT;

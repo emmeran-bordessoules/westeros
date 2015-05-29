@@ -1,4 +1,0 @@
-BEGIN;
-CREATE TABLE "vote_voteform" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "formDep" integer NOT NULL, "formVote" integer NOT NULL);
-
-COMMIT;

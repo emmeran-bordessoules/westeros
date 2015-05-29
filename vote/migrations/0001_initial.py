@@ -13,7 +13,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Departement',
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, verbose_name='ID', serialize=False)),
+                ('id', models.AutoField(auto_created=True, verbose_name='ID', primary_key=True, serialize=False)),
                 ('NumDep', models.IntegerField(default=1)),
                 ('NomDep', models.CharField(max_length=200)),
             ],
@@ -24,9 +24,8 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Votant',
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, verbose_name='ID', serialize=False)),
-                ('IPVotant', models.CharField(max_length=100)),
-                ('NumDep', models.ForeignKey(null=True, to='vote.Departement')),
+                ('id', models.AutoField(auto_created=True, verbose_name='ID', primary_key=True, serialize=False)),
+                ('NumDep', models.ForeignKey(to='vote.Departement')),
             ],
             options={
             },
@@ -35,10 +34,9 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Vote',
             fields=[
-                ('NumVote', models.IntegerField(primary_key=True, serialize=False)),
-                ('Score', models.IntegerField(default=0)),
-                ('NomVote', models.CharField(max_length=100)),
-                ('ImgVote', models.ImageField(upload_to='static/images/')),
+                ('NumVote', models.IntegerField(serialize=False, primary_key=True)),
+                ('Score', models.IntegerField()),
+                ('Nom', models.CharField(default='Jean', max_length=100)),
             ],
             options={
             },

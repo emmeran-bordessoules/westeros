@@ -1,9 +1,0 @@
-BEGIN;
-CREATE TABLE "vote_scoredep__new" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "ScoreDep" integer NOT NULL, "NumDep_id" integer NOT NULL REFERENCES "vote_departement" ("id"), "VoteDep_id" integer NOT NULL REFERENCES "vote_vote" ("NumVote"));
-INSERT INTO "vote_scoredep__new" ("VoteDep_id", "ScoreDep", "NumDep_id", "id") SELECT "VoteDep_id", "scoreDep", "NumDep_id", "id" FROM "vote_scoredep";
-DROP TABLE "vote_scoredep";
-ALTER TABLE "vote_scoredep__new" RENAME TO "vote_scoredep";
-CREATE INDEX "vote_scoredep_df5c358a" ON "vote_scoredep" ("NumDep_id");
-CREATE INDEX "vote_scoredep_4f0624d5" ON "vote_scoredep" ("VoteDep_id");
-
-COMMIT;
