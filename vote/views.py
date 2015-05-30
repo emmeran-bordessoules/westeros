@@ -24,7 +24,10 @@ def incrVote(request):
 				formDep=form.cleaned_data["formDep"]
 				Vote.objects.filter(NumVote=formVote).update(Score=F('Score') + 1)
 				if scoreDep.objects.filter(VoteDep=formVote , NumDep=formDep).count()<1:
-					scoreDep.objects.insert(VoteDep=formVote , NumDep=formDep)
+					sd=scoreDep.()
+					sd.VoteDep=formVote
+					sd.NumDep=formDep
+					sd.save()
 				scoreDep.objects.filter(VoteDep=formVote , NumDep=formDep).update(ScoreDep=F('ScoreDep')+1)
 				voteur=Votant()
 				voteur.ipvotant=ip
