@@ -25,7 +25,7 @@ def incrVote(request):
 				Vote.objects.filter(NumVote=formVote).update(Score=F('Score') + 1)
 				scoreDep.objects.filter(VoteDep=formVote , NumDep=formDep).update(ScoreDep=F('ScoreDep')+1)
 				voteur=Votant()
-				voteur.ipvotant=getIP(request)
+				voteur.ipvotant=ip
 				voteur.save()
 				return redirect('vote.views.home')
 	else:
