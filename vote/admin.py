@@ -5,7 +5,7 @@ class VoteAdmin(admin.ModelAdmin):
 	list_display   = ('NomVote', 'Score',)
 	
 class VoteAdmin2(admin.ModelAdmin):
-	list_display   = ('IPVotant',)
+	list_display   = ('ipvotant',)
 	
 admin.site.register(Vote, VoteAdmin)
 admin.site.register(Departement)

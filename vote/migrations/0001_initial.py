@@ -13,7 +13,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Departement',
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, verbose_name='ID', serialize=False)),
+                ('id', models.AutoField(primary_key=True, serialize=False, auto_created=True, verbose_name='ID')),
                 ('NumDep', models.IntegerField(default=1)),
                 ('NomDep', models.CharField(max_length=200)),
             ],
@@ -22,11 +22,21 @@ class Migration(migrations.Migration):
             bases=(models.Model,),
         ),
         migrations.CreateModel(
+            name='scoreDep',
+            fields=[
+                ('id', models.AutoField(primary_key=True, serialize=False, auto_created=True, verbose_name='ID')),
+                ('ScoreDep', models.IntegerField(default=0)),
+                ('NumDep', models.ForeignKey(to='vote.Departement')),
+            ],
+            options={
+            },
+            bases=(models.Model,),
+        ),
+        migrations.CreateModel(
             name='Votant',
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, verbose_name='ID', serialize=False)),
-                ('IPVotant', models.CharField(max_length=100)),
-                ('NumDep', models.ForeignKey(null=True, to='vote.Departement')),
+                ('id', models.AutoField(primary_key=True, serialize=False, auto_created=True, verbose_name='ID')),
+                ('ipvotant', models.CharField(max_length=100)),
             ],
             options={
             },
@@ -44,9 +54,20 @@ class Migration(migrations.Migration):
             },
             bases=(models.Model,),
         ),
+        migrations.CreateModel(
+            name='voteForm',
+            fields=[
+                ('id', models.AutoField(primary_key=True, serialize=False, auto_created=True, verbose_name='ID')),
+                ('formDep', models.IntegerField(default=0)),
+                ('formVote', models.IntegerField(default=0)),
+            ],
+            options={
+            },
+            bases=(models.Model,),
+        ),
         migrations.AddField(
-            model_name='votant',
-            name='NumVote',
+            model_name='scoredep',
+            name='VoteDep',
             field=models.ForeignKey(to='vote.Vote'),
             preserve_default=True,
         ),

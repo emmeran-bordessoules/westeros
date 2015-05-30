@@ -1,1 +1,6 @@
 {% extends "base.html" %}
+<table>
+<td>Départements</td><td>Vote en tête</td>
+{% for i in sd %}
+	<tr>{{i.NumDep}}</tr><tr>{{i.ScoreVote}}</tr>
+</table>	
