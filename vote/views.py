@@ -17,7 +17,7 @@ def home(request):
 def incrVote(request):
 	if request.method =='POST':
 		ip = getIP(request)
-		if Votant.objects.filter(ipvotant=ip).count() =0:
+		if Votant.objects.filter(ipvotant=ip).count() ==0:
 			form = vote_Form(request.POST)
 			if form.is_valid():
 				formVote=form.cleaned_data["formVote"]
