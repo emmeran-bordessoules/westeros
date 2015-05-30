@@ -24,7 +24,7 @@ def incrVote(request):
 				formDep=form.cleaned_data["formDep"]
 				Vote.objects.filter(NumVote=formVote).update(Score=F('Score') + 1)
 				if scoreDep.objects.filter(VoteDep=formVote , NumDep=formDep).count()<1:
-					sd=scoreDep.()
+					sd=scoreDep()
 					sd.VoteDep=formVote
 					sd.NumDep=formDep
 					sd.save()
