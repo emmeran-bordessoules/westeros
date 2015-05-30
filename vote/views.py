@@ -11,7 +11,7 @@ def home(request):
 	deja_vote=False
 	if Votant.objects.filter(ipvotant=ip).count() >0:
 		deja_vote=True	
-	dep=Departement.objects.all
+	dep=Departement.objects.order_by('id')
 	return render(request,'vote/vote.html',{'votes':votes,'deja_vote':deja_vote,'dep':dep,'score':Score,})
 	
 def incrVote(request):
@@ -23,6 +23,8 @@ def incrVote(request):
 				formVote=form.cleaned_data["formVote"]
 				formDep=form.cleaned_data["formDep"]
 				Vote.objects.filter(NumVote=formVote).update(Score=F('Score') + 1)
+				if scoreDep.objects.filter(VoteDep=formVote , NumDep=formDep).count()<1:
+					scoreDep.objects.filter(VoteDep=formVote , NumDep=formDep).update()
 				scoreDep.objects.filter(VoteDep=formVote , NumDep=formDep).update(ScoreDep=F('ScoreDep')+1)
 				voteur=Votant()
 				voteur.ipvotant=ip
