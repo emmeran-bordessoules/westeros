@@ -3,6 +3,6 @@
 <form action="{% url "contact.views.contact" %}" method="post">
     {% csrf_token %}
     {{ form.as_p }}
-    <input type="submit" value="Submit" />
+    <button type="submit" value="Submit">Envoyer</button>
 </form>
 {% endblock %}

@@ -8,9 +8,8 @@ def home(request):
 	votes=Vote.objects.order_by('NumVote')
 	Score=Vote.objects.order_by('-Score')
 	ip = getIP(request)
-	str(ip)
 	deja_vote=False
-	if Votant.objects.filter(IPVotant=ip).count() >0:
+	if Votant.objects.filter(ipvotant=ip).count() >0:
 		deja_vote=True	
 	dep=Departement.objects.all
 	return render(request,'vote/vote.html',{'votes':votes,'deja_vote':deja_vote,'dep':dep,'score':Score,})
@@ -24,12 +23,12 @@ def incrVote(request):
 			Vote.objects.filter(NumVote=formVote).update(Score=F('Score') + 1)
 			scoreDep.objects.filter(VoteDep=formVote , NumDep=formDep).update(ScoreDep=F('ScoreDep')+1)
 			voteur=Votant()
-			voteur.IPVotant=getIP(request)
+			voteur.ipvotant=getIP(request)
 			voteur.save()
 			return redirect('vote.views.home')
 	else:
 		form=vote_Form()
-	return render(request,'vote/vote.html',locals())
+	return redirect('vote.views.home')
 
 def getIP(request):
 	ip=request.META.get('HTTP_X_FORWARDED_FOR')
