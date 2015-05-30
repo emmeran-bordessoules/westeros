@@ -16,16 +16,18 @@ def home(request):
 	
 def incrVote(request):
 	if request.method =='POST':
-		form = vote_Form(request.POST)
-		if form.is_valid():
-			formVote=form.cleaned_data["formVote"]
-			formDep=form.cleaned_data["formDep"]
-			Vote.objects.filter(NumVote=formVote).update(Score=F('Score') + 1)
-			scoreDep.objects.filter(VoteDep=formVote , NumDep=formDep).update(ScoreDep=F('ScoreDep')+1)
-			voteur=Votant()
-			voteur.ipvotant=getIP(request)
-			voteur.save()
-			return redirect('vote.views.home')
+		ip = getIP(request)
+		if Votant.objects.filter(ipvotant=ip).count() =0:
+			form = vote_Form(request.POST)
+			if form.is_valid():
+				formVote=form.cleaned_data["formVote"]
+				formDep=form.cleaned_data["formDep"]
+				Vote.objects.filter(NumVote=formVote).update(Score=F('Score') + 1)
+				scoreDep.objects.filter(VoteDep=formVote , NumDep=formDep).update(ScoreDep=F('ScoreDep')+1)
+				voteur=Votant()
+				voteur.ipvotant=getIP(request)
+				voteur.save()
+				return redirect('vote.views.home')
 	else:
 		form=vote_Form()
 	return redirect('vote.views.home')
