@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.http import HttpResponse,HttpRequest 
 from .models import Vote,Votant,Departement,scoreDep
 from django.db.models import F
@@ -9,9 +9,11 @@ def home(request):
 	Score=Vote.objects.order_by('-Score')
 	ip = getIP(request)
 	str(ip)
-	votant=Votant.objects.all
+	deja_vote=False
+	if Votant.objects.filter(IPVotant=ip).count() >0:
+		deja_vote=True	
 	dep=Departement.objects.all
-	return render(request,'vote/vote.html',{'votes':votes,'ip':ip,'dep':dep,'score':Score,'votant':votant})
+	return render(request,'vote/vote.html',{'votes':votes,'deja_vote':deja_vote,'dep':dep,'score':Score,})
 	
 def incrVote(request):
 	if request.method =='POST':
@@ -24,6 +26,7 @@ def incrVote(request):
 			voteur=Votant()
 			voteur.IPVotant=getIP(request)
 			voteur.save()
+			return redirect('vote.views.home')
 	else:
 		form=vote_Form()
 	return render(request,'vote/vote.html',locals())

@@ -1,14 +1,10 @@
 {% extends "base.html" %}
 {% block content %}
-	:{{ip}}:
-	{% for i in votant%}
-		<p>{{i.IPVotant}}</p>
-	{%endfor%}
-	{%if ip in votant.IPVotant%}
+	{% if deja_vote %}
 		{% for vote in score %}
 			<div class="vote">
 				<img src="../{{vote.ImgVote}}" alt="image {{vote.NumVote}}"/>
-				<p>{{vote.NumVote}}. {{ vote.NomVote }}: {{vote.score}} vote{{ vote.score|pluralize }}</p>
+				<p>{{vote.NumVote}}. {{ vote.NomVote }}: {{vote.Score}} vote{{ vote.Score|pluralize }}</p>
 			</div>
 		{% endfor %}
 	{% else %}

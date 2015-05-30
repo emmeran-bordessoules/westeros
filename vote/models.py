@@ -8,7 +8,10 @@ class Departement(models.Model):
 		return self.NomDep
 
 class Votant(models.Model):
-	IPVotant=models.CharField(max_length=100)	
+	IPVotant=models.CharField(max_length=100)
+	
+	def __str__(self):
+		return self.IPVotant
 
 class Vote(models.Model):
 	NumVote=models.IntegerField(primary_key=True)
