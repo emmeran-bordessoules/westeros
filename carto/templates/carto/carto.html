@@ -1,6 +1,18 @@
 {% extends "base.html" %}
+{% block content %}
 <table>
-<td>Départements</td><td>Vote en tête</td>
-{% for i in sd %}
-	<tr>{{i.NumDep}}</tr><tr>{{i.ScoreVote}}</tr>
+<tr>
+	<th>Départements</th>
+	<th>Vote en tête</th>
+	<th>Avec</th>
+</tr>
+{% for sc in score %}
+	<tr>
+		<td>{{sc.NumDep}}</td>
+		<td>{{sc.VoteDep}}</td>
+		<td>{{sc.ScoreDep}} vote{{ sc.ScoreDep|pluralize }}</td>
+	</tr>
+{% endfor %}
 </table>	
+{{loal.id}}
+{% endblock%}
