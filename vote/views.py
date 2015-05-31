@@ -1,18 +1,19 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse,HttpRequest 
-from .models import Vote,Votant,Departement,scoreDep
+from .models import Vote,Votant,Departement,scoreDep,citation
 from django.db.models import F
 from .forms import vote_Form
 
 def home(request):
 	votes=Vote.objects.order_by('NumVote')
 	Score=Vote.objects.order_by('-Score')
+	cita=citation.objects.all()
 	ip = getIP(request)
 	deja_vote=False
 	if Votant.objects.filter(ipvotant=ip).count() >0:
 		deja_vote=True	
 	dep=Departement.objects.order_by('id')
-	return render(request,'vote/vote.html',{'votes':votes,'deja_vote':deja_vote,'dep':dep,'score':Score,})
+	return render(request,'vote/vote.html',{'votes':votes,'deja_vote':deja_vote,'dep':dep,'score':Score,'cita':cita})
 	
 def incrVote(request):
 	if request.method =='POST':
@@ -23,13 +24,6 @@ def incrVote(request):
 				formVote=form.cleaned_data["formVote"]
 				formDep=form.cleaned_data["formDep"]
 				Vote.objects.filter(NumVote=formVote).update(Score=F('Score') + 1)
-				if scoreDep.objects.filter(VoteDep=formVote , NumDep=formDep).count()<1:
-					vot=Vote.objects.get(NumVote=formVote)
-					dep=Departement.objects.get(id=formDep)
-					sd=scoreDep()
-					sd.VoteDep=vot
-					sd.NumDep=dep
-					sd.save()
 				scoreDep.objects.filter(VoteDep=formVote , NumDep=formDep).update(ScoreDep=F('ScoreDep')+1)
 				voteur=Votant()
 				voteur.ipvotant=ip
