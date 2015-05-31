@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 from .forms import CommentForm
-from .models import Comment
+from .models import Comment,compteur
 from vote.views import hasard
 
 def add_comment(request):
@@ -17,4 +17,5 @@ def add_comment(request):
 def home(request):
 	Comments= Comment.objects.order_by('-id')
 	cita=hasard()
-	return render(request,'comment/comment.html',{'comments':Comments,'cita':cita})
+	cpt=compteur.objects.get(id=1)
+	return render(request,'comment/comment.html',{'comments':Comments,'cita':cita,'cpt':cpt})

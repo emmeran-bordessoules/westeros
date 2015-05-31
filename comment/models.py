@@ -6,3 +6,6 @@ class Comment(models.Model):
 			
 	def __str__(self):
 		return self.texte
+		
+class compteur(models.Model):
+	compteur=models.IntegerField(default=8)
