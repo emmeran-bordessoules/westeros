@@ -10,4 +10,5 @@ class VoteAdmin2(admin.ModelAdmin):
 admin.site.register(Vote, VoteAdmin)
 admin.site.register(Departement)
 admin.site.register(scoreDep)
+admin.site.register(citation)
 admin.site.register(Votant, VoteAdmin2)
