@@ -2,13 +2,11 @@
 {% block content %}
 	
 	<a class="btn btn-default" href="/comment/add">Ajouter un commentaire</a>
+	<p>Il y a {{cpt.compteur}} commentaire{{cpt.compteur|pluralize}}</p>
     {% for comment in comments %}
 		<div class="comment">
-			<strong>{{comment.id}}. {{ comment.auteur }}</strong>
+			<strong>- {{ comment.auteur }}</strong>
 			<p>{{ comment.texte }}<br/></p>
 		</div>
-		
-	{% empty %}
-		<p class="comment">Pas encore de commentaire dans le chat  ...</p>
 	{% endfor %}
 {% endblock%}
