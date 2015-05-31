@@ -5,7 +5,7 @@
 		{% for vote in score %}
 			<div class="vote">
 				<img src="../{{vote.ImgVote}}" alt="image {{vote.NumVote}}"/>
-				<p>{{vote.NumVote}}. {{ vote.NomVote }}: {{vote.Score}} vote{{ vote.Score|pluralize }}</p>
+				<p>{{vote.NumVote}}. {{ vote.NomVote }} : {{vote.Score}} vote{{ vote.Score|pluralize }}</p>
 			</div>
 		{% endfor %}
 	{% else %}
