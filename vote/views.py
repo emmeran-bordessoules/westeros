@@ -3,7 +3,7 @@ from django.http import HttpResponse,HttpRequest
 from .models import Vote,Votant,Departement,scoreDep,citation
 from django.db.models import F
 from .forms import vote_Form
-from Lib import random
+from random import randint
 
 def home(request):
 	votes=Vote.objects.order_by('NumVote')
