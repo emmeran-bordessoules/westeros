@@ -33,3 +33,7 @@ class scoreDep(models.Model):
 class voteForm(models.Model):
 	formDep=models.IntegerField(default=0)
 	formVote=models.IntegerField(default=0)
+	
+class citation(models.Model):
+	cit=models.CharField(max_length=200)
+	auteur=models.CharField(max_length=100)
