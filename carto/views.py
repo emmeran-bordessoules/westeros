@@ -3,6 +3,6 @@ from vote.models import scoreDep
 from vote.views import hasard
 
 def home(request):
-	score=scoreDep.objects.order_by('-ScoreDep').order_by('NumDep')[:100]
+	score=scoreDep.objects.order_by('NumDep','-ScoreDep')[:800:8]
 	cita=hasard()
 	return render(request,'carto/carto.html',{'score':score,'cita':cita})
