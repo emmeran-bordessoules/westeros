@@ -7,8 +7,11 @@ class VoteAdmin(admin.ModelAdmin):
 class VoteAdmin2(admin.ModelAdmin):
 	list_display   = ('ipvotant',)
 	
+class VoteAdmin3(admin.ModelAdmin):
+	list_display   = ('cit','auteur')
+	
 admin.site.register(Vote, VoteAdmin)
 admin.site.register(Departement)
 admin.site.register(scoreDep)
-admin.site.register(citation)
+admin.site.register(citation, VoteAdmin3)
 admin.site.register(Votant, VoteAdmin2)

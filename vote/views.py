@@ -3,11 +3,12 @@ from django.http import HttpResponse,HttpRequest
 from .models import Vote,Votant,Departement,scoreDep,citation
 from django.db.models import F
 from .forms import vote_Form
+from Lib import random
 
 def home(request):
 	votes=Vote.objects.order_by('NumVote')
 	Score=Vote.objects.order_by('-Score')
-	cita=citation.objects.all()
+	cita=hasard()
 	ip = getIP(request)
 	deja_vote=False
 	if Votant.objects.filter(ipvotant=ip).count() >0:
@@ -40,3 +41,8 @@ def getIP(request):
 	else:
 		ip = request.META.get("REMOTE_ADDR", "")
 	return ip
+
+def hasard():
+	countcita=citation.objects.count()
+	b=random.randint(1, countcita)
+	return citation.objects.get(id=b)

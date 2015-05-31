@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
 from .forms import CommentForm
 from .models import Comment
+from vote.views import hasard
 
 def add_comment(request):
 	if request.method == "POST":
@@ -10,8 +11,10 @@ def add_comment(request):
 			return redirect('comment.views.home',)
 	else:
 		form = CommentForm()
-	return render(request, 'comment/add_comment.html', {'form': form})
+	cita=hasard()
+	return render(request, 'comment/add_comment.html', {'form': form,'cita':cita})
 
 def home(request):
 	Comments= Comment.objects.order_by('-id')
-	return render(request,'comment/comment.html',{'comments':Comments})
+	cita=hasard()
+	return render(request,'comment/comment.html',{'comments':Comments,'cita':cita})

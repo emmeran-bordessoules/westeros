@@ -1,5 +1,6 @@
 from contact.form import ContactForm
 from django.shortcuts import render,redirect
+from vote.views import hasard
 
 def contact(request):
 	if request.method == 'POST':
@@ -9,7 +10,9 @@ def contact(request):
 			return redirect('contact.views.merci')
 	else:
 		form = ContactForm()
-	return render(request, 'contact/contact.html', locals())
+		cita=hasard()
+	return render(request, 'contact/contact.html', {'form': form,'cita':cita})
 
 def merci(request):
-	return render(request, 'contact/merci.html', locals())
+	cita=hasard()
+	return render(request, 'contact/merci.html', {'cita':cita})
