@@ -40,7 +40,12 @@ label {
 margin: 20px 0px 20px 20px;
 }
 
-
+#accueil{
+margin:0; padding:0;
+}
+#wp{
+max-width:100%;
+}
 label.inline {
  display:inline;
  margin-right:50px;
