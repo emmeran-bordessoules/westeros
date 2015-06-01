@@ -22,7 +22,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 SECRET_KEY = 'rlo24oj!2)v#by!&n4g9ru^diqxqk6w8(8q6*3)d$%_)7i%nke'
 
 
-TEMPLATE_DEBUG = True
+TEMPLATE_DEBUG = False
 
 # Application definition
 
@@ -63,7 +63,8 @@ ALLOWED_HOSTS = ['*']
 
 STATIC_ROOT = 'staticfiles'
 
-DEBUG = True
+DEBUG = False
+
 
 DATABASES = {
 	'default': {

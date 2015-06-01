@@ -1,15 +1,15 @@
-{% extends "base.html" %}
+{% extends "base.html" %} <!-- chargement du fichier de base -->
 {% block content %}
-	{% if deja_vote %}
+	{% if deja_vote %} <!-- test si l'IP est dans la base de donnée -->
 		<h1>Classement</h1>
-		{% for vote in score %}
+		{% for vote in score %} <!-- affichage des scores pour les personnes ayant déjà voté -->
 			<div class="vote">
 				<img src="../{{vote.ImgVote}}" alt="image {{vote.NumVote}}"/>
 				<p>{{vote.NumVote}}. {{ vote.NomVote }} : {{vote.Score}} vote{{ vote.Score|pluralize }}</p>
 			</div>
 		{% endfor %}
 	{% else %}
-		<form action="{% url 'vote.views.incrVote' %}" method="post">
+		<form action="{% url 'vote.views.incrVote' %}" method="post"> <!-- formulaire pour le département -->
 		<p>
 			<label for="departement">Dans quel département habitez-vous ?</label><br />
 			<select name="formDep">
@@ -20,7 +20,7 @@
 			</select>
 		</p>
 		<p>
-			<label for="vote">Quivarégnersurwesteros?</label><br />
+			<label for="vote">Quivarégnersurwesteros?</label><br /> <!-- formulaire pour le vote -->
 			<select name="formVote" >
 				<option value=NULL selected></option>
 				{% for vote in votes %}
@@ -32,7 +32,7 @@
 		<button type="submit" value="submit">Je Vote !</button>
 		</form>
 		
-		{% for vote in votes %}
+		{% for vote in votes %} <!-- affichage des choix -->
 			<img src="../{{vote.ImgVote}}" alt="image {{vote.NumVote}}"/>
 			<p>{{vote.NumVote}}. {{ vote.NomVote }}</p> 
 		{% endfor %}

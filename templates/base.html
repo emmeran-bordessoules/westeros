@@ -2,9 +2,6 @@
 {% load staticfiles %}
 <html lang="fr">
 <head>
-	<!-- <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"> 
-	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script> -->
 	<link rel="icon" type="image/png" href="../static/images/got.png" />
 	<link rel="stylesheet" href="{% static 'css/style.css' %}">
 	<title>{% block title %}Le vote de Westeros{% endblock %}</title>
@@ -26,7 +23,7 @@
    </nav>
    <section id="content">
    <hr>
-       {% block content %}{% endblock %}
+       {% block content %}{% endblock %} <!-- block où va aller le contenu en fonction de la page -->
    </section>
 <footer>&copy; Bordessoules E <br/> 
 J'ai créé mon site avec <a href="http://en.wikipedia.org/wiki/Django_(web_framework)" target="_blank" class="external_link" id="link_to_wiki_page">Django</a>

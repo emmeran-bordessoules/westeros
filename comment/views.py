@@ -15,7 +15,7 @@ def add_comment(request):
 	return render(request, 'comment/add_comment.html', {'form': form,'cita':cita})
 
 def home(request):
-	Comments= Comment.objects.order_by('-id')
+	Comments= Comment.objects.order_by('-id') # récupération des commentaires
 	cita=hasard()
-	cpt=compteur.objects.get(id=1)
+	cpt=compteur.objects.get(id=1) # récupération du compteur
 	return render(request,'comment/comment.html',{'comments':Comments,'cita':cita,'cpt':cpt})
