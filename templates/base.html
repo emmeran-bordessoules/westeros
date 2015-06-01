@@ -7,7 +7,9 @@
 	<title>{% block title %}Le vote de Westeros{% endblock %}</title>
 </head>
 <body>
+{% block header %}
 <header><h1>Qui Va Regner Sur WESTEROS</h1> </header>
+{% endblock%}
     <nav>
        {% block nav %}
  
@@ -19,10 +21,12 @@
 			<td>{{cita.cit}}</td>
 			<td>{{cita.auteur}}</td></tr>
 	  </table>
-       {% endblock %}
-   </nav>
-   <section id="content">
+       
+   </nav> 
    <hr>
+		{% endblock %}
+   <section id="content">
+   
        {% block content %}{% endblock %} <!-- block où va aller le contenu en fonction de la page -->
    </section>
 <footer>&copy; Bordessoules E <br/> 
